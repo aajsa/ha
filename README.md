@@ -1,1 +1,4 @@
-<a align="center" href="https://ffff.com" target="_BLANK">Abdulaziz Aljohani<a>
+# Abdulaziz Aljohani
+[abdulazizemp@gmail.com](milto:abdulaziz@gmail.com)
+
+- @2zz on Tik
