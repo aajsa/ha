@@ -84,8 +84,12 @@ label.radio input:checked+span {
 }i>a:hover{
   color:#fff;
 }select {
-   text-align-last:center;
- }
+   text-align:center;
+   text-align: -webkit-center;
+ }select>option {
+    text-align:center;
+    text-align: -webkit-center;
+  }
 
     </style>
   </head>
@@ -139,7 +143,7 @@ label.radio input:checked+span {
               <div class="row">
                   <div class="col-sm-12">
                       <div class="form-group">
-                          <input class="form-control text-center" type="number" pattern="[0-9]+([\.,][0-9]+)?" id="gpa" placeholder="المعدل الجامعي"></div>
+                          <input class="form-control text-center" type="number" pattern="[0-9]*" id="gpa" placeholder="المعدل الجامعي"></div>
                   </div>
               </div>
               <div class="row mt-2">
