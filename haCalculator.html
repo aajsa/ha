@@ -84,11 +84,13 @@ label.radio input:checked+span {
 }i>a:hover{
   color:#fff;
 }select {
-   text-align:center;
+   text-align: center;
    text-align: -webkit-center;
+   text-align: -moz-center;
  }select>option {
-    text-align:center;
-    text-align: -webkit-center;
+   text-align: center;
+   text-align: -webkit-center;
+   text-align: -moz-center;
   }
 
     </style>
@@ -130,7 +132,7 @@ label.radio input:checked+span {
           <div class="card-body text-center">
               <span class="card-title">سنة التخرج</span>
       <div class="d-flex flex-row">
-        <select class="form-control text-center" id="year">
+        <select class="form-control text-center float-center" id="year">
           <option value="5">2016 أو أقدم</option>
           <option value="4">2017</option>
           <option value="3">2018</option>
@@ -143,7 +145,7 @@ label.radio input:checked+span {
               <div class="row">
                   <div class="col-sm-12">
                       <div class="form-group">
-                          <input class="form-control text-center" type="number" pattern="[0-9]*" id="gpa" placeholder="المعدل الجامعي"></div>
+                          <input class="form-control text-center" type="number" pattern="\d+(\.\d*)?" id="gpa" placeholder="المعدل الجامعي"></div>
                   </div>
               </div>
               <div class="row mt-2">
