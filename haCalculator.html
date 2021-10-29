@@ -90,15 +90,17 @@ text-align-last: center; text-align: center;
 text-align-last: center; text-align: center;
 -ms-text-align-last: center;
 -moz-text-align-last: center; text-align-last: center;
+  }#result{
+    font-weight: 700;
   }
     </style>
   </head>
   <body>
     <div class="text-center m-2" style="color:#fff;">
     <h4 class="text-center mt-4">حاسبة نقاط المفاضلة للأمن الصحي <i class="fas fa-calculator"></i></h4>
-  <button class="btn m-0" data-bs-toggle="modal" data-bs-target="#Modal">
+  <a href="#" data-bs-toggle="modal" data-bs-target="#Modal">
     طريقة حساب النقاط <i class="fas fa-question-circle fa-flip-horizontal"></i>
-  </button>
+  </a>
 </div>
   <div class="modal fade" id="Modal" tabindex="-1"  aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
@@ -109,13 +111,18 @@ text-align-last: center; text-align: center;
         </div>
         <div class="modal-body">
           <p>
-          نقاط المعدل التراكمي على سبيل المثال (في حال المعدل 3 من 5)، (3÷5)×100= 60 نقطه <br>
-          سنة التخرج: 2021 – عدد النقاط الإضافية: 0 <br>
-          سنة التخرج: 2020 - عدد النقاط الإضافية: 1 <br>
-          سنة التخرج: 2019 - عدد النقاط الإضافية: 2 <br>
-          سنة التخرج: 2018 - عدد النقاط الإضافية: 3 <br>
-          سنة التخرج: 2017 - عدد النقاط الإضافية: 4 <br>
-          سنة التخرج: 2016 وأقدم - عدد النقاط الإضافية: 5 <br>
+            سنة التخرج: <br>
+            سنة التخرج: 2021 - عدد النقاط الإضافية: 0 <br>
+            سنة التخرج: 2020 - عدد النقاط الإضافية: 1 <br>
+            سنة التخرج: 2019 - عدد النقاط الإضافية: 2 <br>
+            سنة التخرج: 2018 - عدد النقاط الإضافية: 3 <br>
+            سنة التخرج: 2017 - عدد النقاط الإضافية: 4 <br>
+            سنة التخرج: 2016 وأقدم - عدد النقاط الإضافية: 5 <br><br>
+            المعدل التراكمي: <br>
+          نقاط المعدل التراكمي على سبيل المثال (في حال المعدل 3 من 5)، (3÷5)×100= 60 نقطة.
+          <br>
+          <br>
+          اللغة اﻹنجليزية:<br>
           يمنح الحاصل على الاحد الأدنى من احدى الاختبارات المعتمدة الموضحة بالأسفل على خمس نقاط تضاف الى مجموع النقاط (IELTS: 4) - STEP: 67. <br>
         </p>
         </div>
@@ -198,8 +205,7 @@ text-align-last: center; text-align: center;
         const gpa = document.querySelector("#gpa").value;
         const gpaScale = document.querySelector('input[name="gpaScale"]:checked').value;
         const englishTest = (document.querySelector('input[name="englishTest"]').checked) === true ? 5 : 0;
-        console.log(englishTest)
-          document.querySelector("#result").innerHTML = "نقاط المفاضلة: " + Math.abs((gpa / gpaScale) * 100 + Number(englishTest) + Number(year));
+          document.querySelector("#result").innerHTML = "نقاط المفاضلة: " + Math.abs((gpa / gpaScale) * 100 + Number(englishTest) + Number(year)).toFixed(2).replace(/\.00$/, '');;
       });
     </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
