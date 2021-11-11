@@ -11,6 +11,7 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.css"/>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <title>2ziz.me | (WaDirect) واتساب دايركت</title>
     <style>
     @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;900&display=swap');
@@ -34,6 +35,13 @@ body {
     color:#fff;
     border-color: #128c7e;
 }
+.form-control{
+    height: 50px;
+}.form-control:focus{
+  border: none;
+  box-shadow:none;
+  outline: 0 none;
+}
 a{
     font-family: Cairo,'Tahoma';
     color:#fff;
@@ -45,41 +53,45 @@ a:hover{
     </style>
   </head>
   <body>
-    <div class="container mt-3">
-          <div class="text-center mb-2">
+    <div class="container mt-3 text-center">
+          <div class="mb-2">
               <h4 class="mb-0">WaDirect <i class="fab fa-whatsapp"></i></h4>
               <span class="mb-0">Direct chat without saving phone number for whatsapp</span>
           </div>
 
-          <form>
-            <div class="form-row">
-          <div class="form-group col-md-3 mx-auto">
-              <div class="input-group mb-3">
-                <input type="tel" style="max-width:70px;" placeholder="+966"  id="code" class="form-control" required>
-                <input type="tel" style="max-width:150px;" placeholder="0512345678" id="phone" class="form-control" required>
-                <button class="btn" id="go"><i class="fas fa-greater-than"></i></button>
-                  </div>
-              </div>
+        <div class="col-12 my-3">
+           <div class="input-group justify-content-center">
+              <input class="form-control" id="phone" style="max-width:180px;" type="tel">
+              <button class="btn" id="go">Chat</i></button>
           </div>
-      </div>
-        </form>
-      </div>
-        <h6 class="text-center mt-2" style="color:#fff; font-weight:400;">By Abdulaziz Aljohani | <a href="https://2ziz.me">2ziz.me</a><br></h6>
-        <h5 class="text-center">
+        </div>
+
+        <h6 style="color:#fff; font-weight:400;">By Abdulaziz Aljohani | <a href="https://2ziz.me">2ziz.me</a><br></h6>
+        <h5>
           <a  href="https://github.com/Abdulaziz-Aljohani/" target="_blank"><i class="fab fa-github"></i></a>
           <a class="mx-1" href="https://t.me/i2ziz" target="_blank"><i class="fab fa-telegram"></i></a>
           <a  href="https://twitter.com/ody3z" target="_blank"><i class="fab fa-twitter"></i></a>
         </h5>
-      </div>
+  </div>
+
     <script>
-      //console.log("Abdulaziz Aljohani");
-        const go = document.querySelector("#go");
-        go.addEventListener("click", function(){
-        const code = document.querySelector("#code").value.replace('+', '');
-        const phone = document.querySelector("#phone").value.replace(/^0+(?=\d)/, '');
-        if(code || phone){
-          window.open(`https://wa.me/${code}${phone}`, '_blank');
-        }
+    var input = document.querySelector("#phone");
+    var iti = window.intlTelInput(input, {
+    initialCountry: "auto",
+    geoIpLookup: function(callback) {
+      $.get('https://ipinfo.io', function() {}, "jsonp").always(function(resp) {
+        var countryCode = (resp && resp.country) ? resp.country : "sa";
+        callback(countryCode);
+      });
+    },
+    utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.13/js/utils.js"
+    });
+
+
+    const go = document.querySelector("#go");
+    go.addEventListener("click", function(){
+    var number = iti.getNumber(intlTelInputUtils.numberFormat.E164).replace('+','');
+    window.open(`https://wa.me/${number}`, '_blank');
       });
     </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
